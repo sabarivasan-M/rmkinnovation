@@ -1,0 +1,37 @@
+{
+  "_comment": "Reference copy of the demo scenarios implemented in backend/app/api/v1/scenarios.py. Scores shown here are illustrative only - the actual score for each run is always calculated live by the risk engine, never hard-coded.",
+  "scenarios": [
+    {
+      "key": "normal",
+      "label": "Normal Transaction",
+      "sender": "WALLET-ALPHA",
+      "receiver": "WALLET-BETA",
+      "amount": 0.85,
+      "expected": "LOW risk, APPROVE"
+    },
+    {
+      "key": "suspicious",
+      "label": "Suspicious Transaction",
+      "sender": "WALLET-GAMMA",
+      "receiver": "WALLET-UNKNOWN-01",
+      "amount": 6.5,
+      "expected": "HIGH/CRITICAL risk, FLAG/REJECT"
+    },
+    {
+      "key": "quantum_exposed",
+      "label": "Quantum-Exposed Profile",
+      "sender": "WALLET-DELTA",
+      "receiver": "WALLET-BETA",
+      "amount": 2.1,
+      "expected": "Elevated crypto/quantum risk from legacy RSA-2048 profile"
+    },
+    {
+      "key": "authentication_failure",
+      "label": "Authentication Failure",
+      "sender": "WALLET-ALPHA",
+      "receiver": "WALLET-BETA",
+      "amount": 0.9,
+      "expected": "REJECT via fail-safe override, independent of score"
+    }
+  ]
+}

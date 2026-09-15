@@ -1,0 +1,41 @@
+{
+  "_comment": "Reference copy of the seeded demonstration wallets created by backend/app/database/seed.py. This file is documentation only - the backend seeds its own database directly.",
+  "wallets": [
+    {
+      "address": "WALLET-ALPHA",
+      "label": "Alpha (established, normal)",
+      "crypto_algorithm": "ECDSA-secp256k1",
+      "wallet_age_days": 420,
+      "avg_transaction_amount": 0.8,
+      "usual_transactions_per_day": 3.0,
+      "failed_auth_count": 0
+    },
+    {
+      "address": "WALLET-BETA",
+      "label": "Beta (established, normal)",
+      "crypto_algorithm": "ECDSA-secp256k1",
+      "wallet_age_days": 380,
+      "avg_transaction_amount": 1.0,
+      "usual_transactions_per_day": 2.0,
+      "failed_auth_count": 0
+    },
+    {
+      "address": "WALLET-GAMMA",
+      "label": "Gamma (new, elevated risk history)",
+      "crypto_algorithm": "ECDSA-secp256k1",
+      "wallet_age_days": 2,
+      "avg_transaction_amount": 0.5,
+      "usual_transactions_per_day": 1.0,
+      "failed_auth_count": 2
+    },
+    {
+      "address": "WALLET-DELTA",
+      "label": "Delta (legacy RSA profile)",
+      "crypto_algorithm": "RSA-2048",
+      "wallet_age_days": 600,
+      "avg_transaction_amount": 2.0,
+      "usual_transactions_per_day": 5.0,
+      "failed_auth_count": 0
+    }
+  ]
+}
