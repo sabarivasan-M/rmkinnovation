@@ -36,6 +36,11 @@ scripts/    start-backend.sh, start-frontend.sh, start-blockchain.sh, deploy-con
 
 See [docs/architecture.md](docs/architecture.md) for the full data-flow diagram and design rationale.
 
+## Deploy
+
+One-click Render deployment (frontend + backend + local blockchain, one URL, free
+tier): see [docs/deployment.md](docs/deployment.md).
+
 ## Quick start
 
 Requires: Python 3.10+, Node.js 18+, npm.

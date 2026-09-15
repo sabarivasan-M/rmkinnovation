@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: q-shield-cryptovault
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: BLOCKCHAIN_ENABLED
+        value: "true"

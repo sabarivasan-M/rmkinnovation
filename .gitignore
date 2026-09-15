@@ -16,5 +16,6 @@ typechain-types/
 deployment.json
 .pytest_cache/
 *.log
+*.tsbuildinfo
 .DS_Store
 Thumbs.db

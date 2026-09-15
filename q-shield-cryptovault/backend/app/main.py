@@ -1,8 +1,11 @@
 import logging
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.api.v1 import audit, crypto, dashboard, decisions, health, quantum, risk, scenarios, transactions, wallets
 from app.core.config import get_settings
@@ -63,3 +66,18 @@ app.include_router(audit.router, prefix=API_PREFIX, tags=["audit"])
 app.include_router(dashboard.router, prefix=API_PREFIX, tags=["dashboard"])
 app.include_router(wallets.router, prefix=API_PREFIX, tags=["wallets"])
 app.include_router(scenarios.router, prefix=API_PREFIX, tags=["scenarios"])
+
+# Serve the built React frontend (frontend/npm run build -> dist/) from this same origin,
+# so the whole app - UI and API - is reachable behind one URL with no CORS setup needed.
+_FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+
+if _FRONTEND_DIST.exists():
+    app.mount("/assets", StaticFiles(directory=_FRONTEND_DIST / "assets"), name="frontend-assets")
+
+    @app.get("/shield.svg", include_in_schema=False)
+    def frontend_favicon():
+        return FileResponse(_FRONTEND_DIST / "shield.svg")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def serve_frontend(full_path: str):
+        return FileResponse(_FRONTEND_DIST / "index.html")
